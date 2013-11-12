@@ -90,6 +90,8 @@
 
 		var hardcore = false;
 		var flipClass = '';
+		var gridSize = 5;
+
 		if (hardcore) {
 			flipClass = 'hardFlip';
 		} else {
@@ -108,7 +110,7 @@
 		}
 
 		function initialize(n) {
-			var gridSize = n;
+			gridSize = n;
 			var ul = document.createElement('ul');
 			ul.className = 'grid';
 			var totalSize = 600;
@@ -145,32 +147,7 @@
 				e.addEventListener('click', function(){ flipAdjacent(e, i); });
 			});
 
-			function flipAdjacent(element, index) {
-				var row = Math.floor(index / gridSize);
-				var col = index % gridSize;
-				flip(element);
-				var adjacent = [[col-1, row], [col+1, row], [col, row-1], [col, row+1]];
-				adjacent.forEach(function(point, i, a) {
-					if (point[0] >= 0 && point[0] < gridSize) {
-						if (point[1] >= 0 && point[1] < gridSize) {
-							flip(nodeArray[point[1]*gridSize + point[0]]);
-						}
-					}
-				});
-
-				var isWinner = true;
-				nodeArray.forEach(function(e, i, a) {
-					if (hardcore) {
-						if (e.className != flipClass) isWinner = false;
-					} else {
-						if (e.className == flipClass) isWinner = false;
-					}
-				});
-				if (isWinner) {
-					defaultSetup();
-					alert('You win!');
-				}
-			}
+			
 		}
 
 		function flip(element) {
@@ -179,6 +156,38 @@
 				element.className = '';
 			} else {
 				element.className = flipClass;
+			}
+		}
+
+		function flipAdjacent(element, index) {
+			var row = Math.floor(index / gridSize);
+			var col = index % gridSize;
+			flip(element);
+			var adjacent = [[col-1, row], [col+1, row], [col, row-1], [col, row+1]];
+			adjacent.forEach(function(point, i, a) {
+				if (point[0] >= 0 && point[0] < gridSize) {
+					if (point[1] >= 0 && point[1] < gridSize) {
+						flip(document.getElementsByTagName('li')[point[1]*gridSize + point[0]]);
+					}
+				}
+			});
+
+			var isWinner = true;
+			var nodeList = document.getElementsByTagName('li');
+			var nodeArray = [];
+			for (var i = 0; i < nodeList.length; i++) {
+				nodeArray[i] = nodeList[i];
+			}
+			nodeArray.forEach(function(e, i, a) {
+				if (hardcore) {
+					if (e.className != flipClass) isWinner = false;
+				} else {
+					if (e.className == flipClass) isWinner = false;
+				}
+			});
+			if (isWinner) {
+				defaultSetup();
+				alert('You win!');
 			}
 		}
 
@@ -205,7 +214,7 @@
 			}
 			var gridSize = document.getElementsByClassName('sizeInput')[0].value;
 			nodeArray.forEach(function(e, i, a) {
-				if (Math.random() > 0.8) flip(e);
+				if (Math.random() > 0.8) flipAdjacent(e);
 			});
 		}
 
