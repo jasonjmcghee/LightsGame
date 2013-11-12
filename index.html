@@ -17,6 +17,7 @@
 		ul {
 			margin-left: auto;
 			margin-right: auto;
+			padding-left: 0px;
 			margin-top: 20px;
 			-webkit-transform: rotateY( 0deg );
          	   -moz-transform: rotateY( 0deg );
@@ -28,10 +29,6 @@
 			list-style: none;
 			display: block;
 			background-color: #333;
-
-			text-align: center;
-			font-family: 'Oleo Script', cursive;
-			font-size: 95px;
 			color: rgba(0,0,0,0);
 
 			-webkit-transition: preserve-3d;
@@ -87,8 +84,10 @@
 <body onload="initialize(5);">
 
 <h1>Lights Game</h1>
-<input class="sizeInput" type="range" value="5" onchange="defaultSetup();" min="2" max="20">Game Size</input><br>
+<p id="nxn">Game Size: 5x5</p>
+<input class="sizeInput" type="range" value="5" onchange="defaultSetup(); updateSizeText();" min="2" max="20"></input><br>
 	<script>
+
 		var hardcore = false;
 		var flipClass = '';
 		if (hardcore) {
@@ -154,7 +153,6 @@
 				adjacent.forEach(function(point, i, a) {
 					if (point[0] >= 0 && point[0] < gridSize) {
 						if (point[1] >= 0 && point[1] < gridSize) {
-							console.log(point);
 							flip(nodeArray[point[1]*gridSize + point[0]]);
 						}
 					}
@@ -173,7 +171,6 @@
 					alert('You win!');
 				}
 			}
-
 		}
 
 		function flip(element) {
@@ -212,8 +209,16 @@
 			});
 		}
 
+		function updateSizeText() {
+			if (document.getElementsByClassName('sizeInput')[0].value) {
+				var size = document.getElementsByClassName('sizeInput')[0].value
+				document.getElementById('nxn').textContent = "Game Size: " + size.toString() + 'x' + size.toString();
+			}
+		}
+
 	</script>
 	<input type="checkbox" onchange="toggleHardcore(); defaultSetup();">Toggle Hardcore</button><br>
+	<p>Click the 'Generate Random Game' button and try to turn all the blocks to dark grey!</p>
 	<button onclick="randomize();">Generate Random Game</button>
 </body>
 </html>
