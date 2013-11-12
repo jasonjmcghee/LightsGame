@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Example</title>
+	<title>Lights Game</title>
 	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 	<style>
+	
 		body {
 			text-align: center;
+			
 		}
+		
+		h1 {
+			font-family: 'Oleo Script', 'cursive';
+		}
+		
 		ul {
 			margin-left: auto;
 			margin-right: auto;
@@ -79,8 +86,8 @@
 </head>
 <body onload="initialize(5);">
 
-<h1>Game Size</h1>
-<input class="sizeInput" type="range" value="5" onchange="defaultSetup();" min="2" max="20"></input><br>
+<h1>Lights Game</h1>
+<input class="sizeInput" type="range" value="5" onchange="defaultSetup();" min="2" max="20">Game Size</input><br>
 	<script>
 		var hardcore = false;
 		var flipClass = '';
