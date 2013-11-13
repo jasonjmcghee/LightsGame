@@ -103,8 +103,7 @@ function flipAdjacent(element, index) {
 		}
 	});
 	if (isWinner) {
-		defaultSetup();
-		alert('You won in:' + numMoves + '!');
+		alert('You won in: ' + numMoves + ' moves!');
 		defaultSetup();
 
 	}
