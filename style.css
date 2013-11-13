@@ -1,13 +1,26 @@
 body {
 	text-align: center;
 }
+@media screen and (min-width: 1100px){
+	#container {
+		position: absolute;
+		margin-left: 100px;
+		width: 100%;
 
-#container {
-	float: left;
+	}
+
+	#sidebar {
+		float: left;
+		margin-left: 20px;
+	}
 }
 
-#sidebar {
-	float: left;
+@media screen and (max-width: 1100px){
+	#container {
+	}
+
+	#sidebar {
+	}
 }
 
 h1 {
