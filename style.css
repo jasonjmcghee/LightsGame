@@ -1,0 +1,80 @@
+body {
+	text-align: center;
+}
+
+#container {
+	float: left;
+}
+
+#sidebar {
+	float: left;
+}
+
+h1 {
+	font-family: 'Oleo Script', 'cursive';
+}
+
+ul {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0px;
+	margin-top: 20px;
+	-webkit-transform: rotateY( 0deg );
+ 	   -moz-transform: rotateY( 0deg );
+   	     -o-transform: rotateY( 0deg );
+            transform: rotateY( 0deg );
+}
+ul li {
+	float: left;
+	list-style: none;
+	display: block;
+	background-color: #333;
+	color: rgba(0,0,0,0);
+
+	-webkit-transition: preserve-3d;
+ 	   -moz-transition: preserve-3d;
+   		 -o-transition: preserve-3d;
+      		transition: preserve-3d;
+	-webkit-transition: -webkit-transform 0.2s;
+ 	   -moz-transition: -moz-transform 0.2s;
+   		 -o-transition: -o-transform 0.2s;
+      		transition: transform 0.2s;
+
+}
+
+ul li:nth-child(3n+1) {
+}
+
+ul li:hover {
+	background-color: #3a8;
+}
+
+ul li.flipped:hover {
+	background-color: #be7;
+}
+
+ul li.flipped {
+	-webkit-transform: rotateY( 180deg );
+ 	   -moz-transform: rotateY( 180deg );
+   	     -o-transform: rotateY( 180deg );
+            transform: rotateY( 180deg );
+            -webkit-backface-visibility:visible;
+
+    background-color: #ab2;
+    color: rgb(0,0,0);
+}
+
+ul li.hardFlip {
+	-webkit-transform: rotateY( 90deg );
+ 	   -moz-transform: rotateY( 90deg );
+   	     -o-transform: rotateY( 90deg );
+            transform: rotateY( 90deg );
+
+	-webkit-backface-visibility:hidden; /* Chrome and Safari */
+	   -moz-backface-visibility:hidden; /* Firefox */
+	    -ms-backface-visibility:hidden; /* Internet Explorer */
+	    	backface-visibility:hidden;
+
+	background-color: #ab2;
+    color: rgb(0,0,0);
+}
