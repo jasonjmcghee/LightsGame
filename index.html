@@ -6,16 +6,17 @@
 	<link rel="stylesheet" href="style.css"></style>
 	<script src="game.js"></script>
 </head>
-<body onload="initialize(5);">
+<body onload="initialize(5); randomize()">
 
 	<div id="sidebar">
 		<h1>Lights Game</h1>
 		<p id="nxn">Game Size: 5x5</p>
 		<input class="sizeInput" type="range" value="5" onchange="defaultSetup(); updateSizeText();" min="2" max="20"></input><br>
 		<input type="checkbox" onchange="toggleHardcore(); defaultSetup();">Toggle Hardcore</button><br>
-		<p>Click the 'Generate Random Game' button to start.<br>
-			Turn all blocks to dark grey to win!</p>
-		<button onclick="randomize();">Generate Random Game</button>
+		<p>Normal: Turn all blocks to dark grey to win!<br>
+			Hardcore: Clear all dark grey blocks to win!</p>
+		<button onclick="defaultSetup();">Generate Random Game</button>
+		<p id="numMoves">Moves so far: 0</p>
 	</div>
 	<div id="container"></div>
 </body>

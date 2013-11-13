@@ -1,6 +1,7 @@
 var hardcore = false;
 var flipClass = '';
 var gridSize = 5;
+var numMoves = 0;
 
 if (hardcore) {
 	flipClass = 'hardFlip';
@@ -20,6 +21,8 @@ function setNewSize(size) {
 }
 
 function initialize(n) {
+	numMoves = 0;
+	document.getElementById("numMoves").textContent = 'Moves so far: ' + numMoves;
 	gridSize = n;
 	var ul = document.createElement('ul');
 	ul.className = 'grid';
@@ -54,7 +57,11 @@ function initialize(n) {
 		nodeArray[i] = nodeList[i];
 	}
 	nodeArray.forEach(function(e, i, a) {
-		e.addEventListener('click', function(){ flipAdjacent(e, i); });
+		e.addEventListener('click', function(){ 
+			flipAdjacent(e, i); 
+			numMoves++; 
+			document.getElementById("numMoves").textContent = 'Moves so far: ' + numMoves;
+		});
 	});
 
 	
@@ -97,12 +104,15 @@ function flipAdjacent(element, index) {
 	});
 	if (isWinner) {
 		defaultSetup();
-		alert('You win!');
+		alert('You won in:' + numMoves + '!');
+		defaultSetup();
+
 	}
 }
 
 function defaultSetup() {
 	setNewSize(document.getElementsByClassName('sizeInput')[0].value);
+	randomize();
 }
 
 function toggleHardcore() {
