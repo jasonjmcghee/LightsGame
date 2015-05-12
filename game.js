@@ -112,6 +112,7 @@ function flipAdjacent(element, index) {
 function defaultSetup() {
 	setNewSize(document.getElementsByClassName('sizeInput')[0].value);
 	randomize();
+	document.getElementById("numMoves").textContent = 'Moves so far: ' + numMoves;
 }
 
 function toggleHardcore() {
